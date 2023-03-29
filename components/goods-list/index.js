@@ -30,6 +30,7 @@ Component({
   },
 
   methods: {
+    // 点击商品
     onClickGoods(e) {
       const { index } = e.currentTarget.dataset;
       this.triggerEvent('click', { ...e.detail, index });

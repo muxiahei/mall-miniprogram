@@ -10,7 +10,7 @@ function mockFetchCartGroupData(params) {
 
 /** 获取购物车数据 */
 export function fetchCartGroupData(params) {
-  if (config.useMock) {
+  if (true) {
     return mockFetchCartGroupData(params);
   }
 

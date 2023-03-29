@@ -23,7 +23,7 @@ Page({
   },
   // 分页信息
   goodListPagination: {
-    index: 0,
+    index: 1,
     num: 20,
   },
   privateData: {
@@ -68,7 +68,7 @@ Page({
     this.privateData.tabIndex = e.detail.value;
     this.loadGoodsList(true);
   },
-
+  
   onReTry() {
     this.loadGoodsList();
   },
@@ -79,22 +79,18 @@ Page({
         scrollTop: 0,
       });
     }
-
     this.setData({ goodsListLoadStatus: 1 });
-
     const pageSize = this.goodListPagination.num;
     let pageIndex = this.privateData.tabIndex * pageSize + this.goodListPagination.index + 1;
     if (fresh) {
-      pageIndex = 0;
+      pageIndex = 1;
     }
-
     try {
       const nextList = await fetchGoodsList(pageIndex, pageSize);
       this.setData({
         goodsList: fresh ? nextList : this.data.goodsList.concat(nextList),
         goodsListLoadStatus: 0,
       });
-
       this.goodListPagination.index = pageIndex;
       this.goodListPagination.num = pageSize;
     } catch (err) {

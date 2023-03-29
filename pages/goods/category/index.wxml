@@ -1,2 +1,8 @@
-<!--pages/goods/category/index.wxml-->
-<text>pages/goods/category/index.wxml</text>
+<view class="wrap">
+  <goods-category
+    level="{{3}}"
+    custom-class="goods-category-class"
+    category="{{list}}"
+    bind:changeCategory="onChange"
+  />
+</view>

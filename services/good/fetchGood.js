@@ -1,4 +1,4 @@
-import { config } from '../../config/index';
+import { config, baseUrl } from '../../config/index';
 
 /** 获取商品列表 */
 function mockFetchGood(ID = 0) {
@@ -13,6 +13,24 @@ export function fetchGood(ID = 0) {
     return mockFetchGood(ID);
   }
   return new Promise((resolve) => {
-    resolve('real api');
+    wx.request({
+      url: baseUrl + '/spus/' + ID,
+      header: {
+        'content-type': 'application/json'
+      },
+      // header: {
+      //   "content-type": "application/x-www-form-urlencoded"
+      // },
+      complete: (res) => {
+        if (res.statusCode >= 200 && res.statusCode < 300) {
+          console.log(res);
+          resolve(
+            res.data.data
+          )
+        } else {
+          reject(res)
+        }
+      }
+    })
   });
 }

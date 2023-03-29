@@ -9,32 +9,23 @@
       duration="{{duration}}"
       interval="{{interval}}"
       navigation="{{navigation}}"
-      list="{{details.images}}"
-    >
-      <!-- <t-swiper-item
-			  wx:for="{{details.images}}"
-			  wx:for-item="item"
-			  wx:for-index="index"
-			  wx:key="index"
-			>
-				<t-image src="{{item}}" t-class="swipe-img" />
-			</t-swiper-item> -->
+      list="{{details.images}}">
     </t-swiper>
     <!-- 商品信息 -->
     <view class="goods-info">
       <view class="goods-number">
         <view class="goods-price">
           <price
-            wr-class="class-goods-price"
-            symbol-class="class-goods-symbol"
-            price="{{minSalePrice}}"
-            type="lighter"
-          />
+              wr-class="class-goods-price"
+              symbol-class="class-goods-symbol"
+              price="{{minSalePrice}}"
+              type="lighter"/>
           <view class="goods-price-up">起</view>
           <price wr-class="class-goods-del" price="{{maxLinePrice}}" type="delthrough" />
         </view>
         <view class="sold-num">已售{{soldNum}}</view>
       </view>
+      <!-- 活动 -->
       <view wx:if="{{activityList.length > 0}}" class="goods-activity" bindtap="showPromotionPopup">
         <view class="tags-container">
           <view wx:for="{{activityList}}" data-promotionId="{{item.promotionId}}" wx:key="index" wx:if="{{index<4}}">
@@ -46,6 +37,7 @@
           <t-icon name="chevron-right" size="42rpx" />
         </view>
       </view>
+      <!-- 商品标题 -->
       <view class="goods-title">
         <view class="goods-name">{{details.title}}</view>
         <view class="goods-tag">
@@ -57,6 +49,7 @@
           </t-button>
         </view>
       </view>
+      <!-- 介绍 -->
       <view class="goods-intro">{{intro}}</view>
     </view>
     <view class="spu-select" bindtap="showSkuSelectPopup">
@@ -68,6 +61,7 @@
         <t-icon name="chevron-right" size="40rpx" color="#BBBBBB" />
       </view>
     </view>
+    <!-- 商品评价统计 -->
     <view wx:if="{{ commentsStatistics.commentCount > 0 }}" class="comments-wrap">
       <view class="comments-head" bindtap="navToCommentsListPage">
         <view class="comments-title-wrap">
@@ -98,6 +92,7 @@
       </view>
     </view>
   </view>
+  <!-- 商品描述内容 -->
   <view class="desc-content">
     <view class="desc-content__title" wx:if="{{details.desc.length > 0}}">
       <t-image t-class="img" src="{{recLeftImg}}" />
@@ -121,6 +116,7 @@
       class="goods-details-card"
     />
   </view>
+  <!-- 商品规格参数 -->
   <goods-specs-popup
     id="goodsSpecsPopup"
     show="{{isSpuSelectPopupShow}}"
