@@ -17,7 +17,6 @@ function mockFetchGoodsList(pageIndex = 1, pageSize = 20) {
     }),
   );
 }
-
 /** 获取商品列表 */
 export function fetchGoodsList(pageCurrent = 1, pageSize = 20) {
   if (config.useMock) {
@@ -44,16 +43,11 @@ export function fetchGoodsList(pageCurrent = 1, pageSize = 20) {
             const element = array[index];
             const spu = {};
             spu["spuId"] = element.spuId;
-            spu["thumb"] = element.images;
+            spu["thumb"] = element.image;
             spu["title"] = element.productName;
             spu["price"] = element.minSalePrice;
-            spu["originPrice"] = element.maxSalePrice;
+            spu["originPrice"] = element.maxLinePrice;
             // spu["tags"] = element.spuId;
-            // spuId: item.spuId,
-            // thumb: item.primaryImage,
-            // title: item.title,
-            // price: item.minSalePrice,
-            // originPrice: item.maxLinePrice,
             // tags: item.spuTagList.map((tag) => tag.title),
             spuList.push(spu);
           }

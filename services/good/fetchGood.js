@@ -23,12 +23,11 @@ export function fetchGood(ID = 0) {
       // },
       complete: (res) => {
         if (res.statusCode >= 200 && res.statusCode < 300) {
-          console.log(res);
           resolve(
             res.data.data
           )
         } else {
-          reject(res)
+          reject(res.data.data)
         }
       }
     })

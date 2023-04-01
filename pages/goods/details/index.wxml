@@ -2,14 +2,14 @@
   <view class="goods-head">
     <!-- 轮播图 -->
     <t-swiper
-      wx:if="{{details.images.length > 0}}"
+      wx:if="{{productInfo.images.length > 0}}"
       height="750rpx"
       current="{{current}}"
       autoplay="{{autoplay}}"
       duration="{{duration}}"
       interval="{{interval}}"
       navigation="{{navigation}}"
-      list="{{details.images}}">
+      list="{{productInfo.images}}">
     </t-swiper>
     <!-- 商品信息 -->
     <view class="goods-info">
@@ -39,7 +39,7 @@
       </view>
       <!-- 商品标题 -->
       <view class="goods-title">
-        <view class="goods-name">{{details.title}}</view>
+        <view class="goods-name">{{productInfo.productName}}</view>
         <view class="goods-tag">
           <t-button open-type="share" t-class="shareBtn" variant="text">
             <view class="btn-icon">
@@ -64,9 +64,9 @@
     <!-- 商品评价统计 -->
     <view wx:if="{{ commentsStatistics.commentCount > 0 }}" class="comments-wrap">
       <view class="comments-head" bindtap="navToCommentsListPage">
-        <view class="comments-title-wrap">
-          <view class="comments-title-label">商品评价</view>
-          <view class="comments-title-count"> ({{ commentsStatistics.commentCount }}) </view>
+        <view class="comments-details-wrap">
+          <view class="comments-details-label">商品评价</view>
+          <view class="comments-details-count"> ({{ commentsStatistics.commentCount }}) </view>
         </view>
         <view class="comments-rate-wrap">
           <view class="comments-good-rate">{{commentsStatistics.goodRate}}% 好评</view>
@@ -94,12 +94,12 @@
   </view>
   <!-- 商品描述内容 -->
   <view class="desc-content">
-    <view class="desc-content__title" wx:if="{{details.desc.length > 0}}">
+    <!-- <view class="desc-content__details" wx:if="{{productInfo.descript.length > 0}}">
       <t-image t-class="img" src="{{recLeftImg}}" />
-      <span class="desc-content__title--text">详情介绍</span>
+      <span class="desc-content__details--text">详情介绍</span>
       <t-image t-class="img" src="{{recRightImg}}" />
-    </view>
-    <view wx:if="{{details.desc.length > 0}}" wx:for="{{details.desc}}" wx:key="index">
+    </view> -->
+    <view wx:if="{{productInfo.descript.length > 0}}" wx:for="{{productInfo.descript}}" wx:key="index">
       <t-image t-class="desc-content__img" src="{{item}}" mode="widthFix" />
     </view>
   </view>
@@ -120,11 +120,11 @@
   <goods-specs-popup
     id="goodsSpecsPopup"
     show="{{isSpuSelectPopupShow}}"
-    title="{{details.title || ''}}"
+    details="{{productInfo.productName || ''}}"
     src="{{specImg ? specImg : primaryImage}}"
-    specList="{{details.specList || []}}"
+    specList="{{productInfo.specList || []}}"
     skuList="{{skuArray}}"
-    limitBuyInfo="{{details.limitInfo[0].text || ''}}"
+    limitBuyInfo="{{productInfo.limitInfo[0].text || ''}}"
     bind:closeSpecsPopup="handlePopupHide"
     bind:change="chooseSpecItem"
     bind:changeNum="changeNum"

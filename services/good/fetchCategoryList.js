@@ -24,16 +24,16 @@ export function getCategoryList() {
       complete: (res) => {
         console.log(res);
         if (res.statusCode >= 200 && res.statusCode < 300) {
-          const categoryList = []
           const array = res.data.data
-          for (let index = 0; index < array.length; index++) {
-            const element = array[index];
-            const category = {};
-            // category["groupId"] = element.spuId;
-            // category["name"] = element.categoryName;
-            // category["title"] = element.productName;
-            categoryList.push(category);
-          }
+          // const categoryList = []
+          // for (let index = 0; index < array.length; index++) {
+          //   const element = array[index];
+          //   const category = {};
+          //   category["groupId"] = element.spuId;
+          //   category["name"] = element.categoryName;
+          //   category["title"] = element.productName;
+          //   categoryList.push(category);
+          // }
           resolve(
             array
           )

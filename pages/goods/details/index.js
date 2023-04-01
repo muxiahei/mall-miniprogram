@@ -34,7 +34,8 @@ Page({
     activityList: [],
     recLeftImg,
     recRightImg,
-    details: {},
+    // 商品spu信息
+    productInfo: {},
     goodsTabArray: [
       {
         name: '商品',
@@ -122,7 +123,7 @@ Page({
 
   showCurImg(e) {
     const { index } = e.detail;
-    const { images } = this.data.details;
+    const { images } = this.data.productInfo;
     wx.previewImage({
       current: images[index],
       urls: images, // 需要预览的图片http链接列表
@@ -135,7 +136,7 @@ Page({
   },
 
   chooseSpecItem(e) {
-    const { specList } = this.data.details;
+    const { specList } = this.data.productInfo;
     const { selectedSku, isAllSelectedSku } = e.detail;
     if (!isAllSelectedSku) {
       this.setData({
@@ -249,19 +250,19 @@ Page({
       quantity: buyNum,
       storeId: '1',
       spuId: this.data.spuId,
-      goodsName: this.data.details.title,
+      goodsName: this.data.productInfo.title,
       skuId:
         type === 1 ? this.data.skuList[0].skuId : this.data.selectItem.skuId,
-      available: this.data.details.available,
-      price: this.data.details.minSalePrice,
-      specInfo: this.data.details.specList?.map((item) => ({
+      available: this.data.productInfo.available,
+      price: this.data.productInfo.minSalePrice,
+      specInfo: this.data.productInfo.specList?.map((item) => ({
         specTitle: item.title,
         specValue: item.specValueList[0].specValue,
       })),
-      primaryImage: this.data.details.primaryImage,
-      spuId: this.data.details.spuId,
-      thumb: this.data.details.primaryImage,
-      title: this.data.details.title,
+      primaryImage: this.data.productInfo.primaryImage,
+      spuId: this.data.productInfo.spuId,
+      thumb: this.data.productInfo.primaryImage,
+      title: this.data.productInfo.title,
     };
     let urlQueryStr = obj2Params({
       goodsRequestList: JSON.stringify([query]),
@@ -312,7 +313,7 @@ Page({
   // getDetail(spuId) {
   //   Promise.all([fetchGood(spuId), fetchActivityList()]).then((res) => { 
   //     console.log(res);
-  //     const [details, activityList] = res;
+  //     const [productInfo, activityList] = res;
   //     const skuArray = [];
   //     const {
   //       skuList,
@@ -322,7 +323,7 @@ Page({
   //       maxSalePrice,
   //       maxLinePrice,
   //       soldNum,
-  //     } = details;
+  //     } = productInfo;
   //     skuList.forEach((item) => {
   //       skuArray.push({
   //         skuId: item.skuId,
@@ -338,9 +339,9 @@ Page({
   //       });
   //     });
   //     this.setData({
-  //       details,
+  //       productInfo,
   //       activityList,
-  //       isStock: details.spuStockQuantity > 0,
+  //       isStock: productInfo.spuStockQuantity > 0,
   //       maxSalePrice: maxSalePrice ? parseInt(maxSalePrice) : 0,
   //       maxLinePrice: maxLinePrice ? parseInt(maxLinePrice) : 0,
   //       minSalePrice: minSalePrice ? parseInt(minSalePrice) : 0,
@@ -352,36 +353,40 @@ Page({
   //     });
   //   });
   // },
+
   // 获取商品详情信息
   getDetail(spuId) {
     Promise.all([fetchGood(spuId), fetchActivityList()]).then((res) => { 
-      console.log(res);
-      const productSpu = res[0].productSpu;
+      const productInfo = res[0].productSpu;
+      productInfo.images = JSON.parse(productInfo.images);
+      productInfo.descript = JSON.parse(productInfo.descript);
       const skuList = res[0].productSku;
+      const primaryImage = res[0].productSpu.image;
+      const isPutOnSale = res[0].productSpu.publishStatus;
+      const minSalePrice = res[0].productSpu.minSalePrice;
+      const maxSalePrice = res[0].productSpu.maxSalePrice;
+      const maxLinePrice = res[0].productSpu.maxLinePrice;
+      const soldNum = res[0].productSpu.soldNum;
+
       const skuArray = [];
-      const {
-        images,
-        minSalePrice,
-        maxSalePrice,
-      } = productSpu;
       skuList.forEach((item) => {
         skuArray.push({
           skuId: item.skuId,
-          quantity: item.stockInfo ? item.stockInfo.stockQuantity : 0,
-          specInfo: item.specInfo,
+          quantity: item.num,
+          specInfo: item.skuSpecifications,
         });
       });
       const promotionArray = [];
-      activityList.forEach((item) => {
-        promotionArray.push({
-          tag: item.promotionSubCode === 'MYJ' ? '满减' : '满折',
-          label: '满100元减99.9元',
-        });
-      });
+      // activityList.forEach((item) => {
+      //   promotionArray.push({
+      //     tag: item.promotionSubCode === 'MYJ' ? '满减' : '满折',
+      //     label: '满100元减99.9元',
+      //   });
+      // });
       this.setData({
-        details,
+        productInfo,
         // activityList,
-        isStock: details.spuStockQuantity > 0,
+        isStock: 1 > 0,
         maxSalePrice: maxSalePrice ? parseInt(maxSalePrice) : 0,
         maxLinePrice: maxLinePrice ? parseInt(maxLinePrice) : 0,
         minSalePrice: minSalePrice ? parseInt(minSalePrice) : 0,
@@ -429,9 +434,9 @@ Page({
       shareSubTitle = selectedAttrStr.slice(count + 1, selectedAttrStr.length);
     }
     const customInfo = {
-      imageUrl: this.data.details.primaryImage,
-      title: this.data.details.title + shareSubTitle,
-      path: `/pages/goods/details/index?spuId=${this.data.spuId}`,
+      imageUrl: this.data.productInfo.primaryImage,
+      title: this.data.productInfo.title + shareSubTitle,
+      path: `/pages/goods/productInfo/index?spuId=${this.data.spuId}`,
     };
     return customInfo;
   },
