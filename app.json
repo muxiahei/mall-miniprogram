@@ -6,8 +6,11 @@
     "pages/usercenter/address/list/index",
     "pages/usercenter/address/edit/index",
     "pages/goods/category/index",
-    "pages/cart/index",
-    "pages/goods/details/index"
+    "pages/goods/details/index",
+    "pages/goods/search/index",
+    "pages/goods/result/index",
+    "pages/goods/list/index",
+    "pages/cart/index"
   ],
   "tabBar": {
     "custom": true,
