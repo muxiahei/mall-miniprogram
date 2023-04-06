@@ -4,8 +4,8 @@ Component({
   options: { multipleSlots: true },
 
   properties: {
+    // 商品是否下架
     soldout: {
-      // 商品是否下架
       type: Boolean,
       value: false,
     },
@@ -13,16 +13,19 @@ Component({
       type: Array,
       value: [],
     },
+    // 是否有库存
     isStock: {
       type: Boolean,
       value: true,
-    }, // 是否有库存
+    },
+    // 是否开启按钮插槽
     isSlotButton: {
       type: Boolean,
       value: false,
-    }, // 是否开启按钮插槽
+    },
+    // 购物车气泡数量
     shopCartNum: {
-      type: Number, // 购物车气泡数量
+      type: Number, 
     },
     buttonType: {
       type: Number,

@@ -29,23 +29,29 @@ Page({
       hasImageCount: 0,
       middleCount: 0,
     },
-    isShowPromotionPop: false,
+    
     // 活动列表
     activityList: [],
     recLeftImg,
     recRightImg,
     // 商品spu信息
     productInfo: {},
-    goodsTabArray: [
-      {
-        name: '商品',
-        value: '', // 空字符串代表置顶
-      },
-      {
-        name: '详情',
-        value: 'goods-page',
-      },
-    ],
+    // 商品主图
+    primaryImage: '',
+    // 已售数量
+    soldNum: 0,
+
+    // goodsTabArray: [
+    //   {
+    //     name: '商品',
+    //     value: '', // 空字符串代表置顶
+    //   },
+    //   {
+    //     name: '详情',
+    //     value: 'goods-page',
+    //   },
+    // ],
+
     storeLogo: `${imgPrefix}common/store-logo.png`,
     storeName: '云mall标准版旗舰店',
     jumpArray: [
@@ -60,36 +66,45 @@ Page({
         iconName: 'cart',
         showCartNum: true,
       },
-    ],
+    ], 
+    // 是否有库存
     isStock: true,
+    // 购物车数量
     cartNum: 0,
+    // 是否售空
     soldout: false,
+    // 按钮类型
     buttonType: 1,
+    // 购买的数量
     buyNum: 1,
     selectedAttrStr: '',
     skuArray: [],
-    primaryImage: '',
+    // 规格图片
     specImg: '',
+    // 是否显示spu选择框
     isSpuSelectPopupShow: false,
     isAllSelectedSku: false,
+    // 购买类型 1：立即购买 2：加入购物车
     buyType: 0,
-    outOperateStatus: false, // 是否外层加入购物车
+    // 是否外层加入购物车
+    outOperateStatus: false,
     operateType: 0,
     selectSkuSellsPrice: 0,
     maxLinePrice: 0,
     minSalePrice: 0,
     maxSalePrice: 0,
+    // 促销活动
     list: [],
+    // 是否显示促销说明框
+    isShowPromotionPop: false,
     spuId: '',
+
     // 轮播图相关配置
     navigation: { type: 'fraction' },
     current: 0,
     autoplay: true,
     duration: 500,
-    interval: 5000,
-    
-    // 已售数量
-    soldNum: 0,
+    interval: 5000
   },
 
   handlePopupHide() {
@@ -97,7 +112,7 @@ Page({
       isSpuSelectPopupShow: false,
     });
   },
-
+  // 显示spu的选择框
   showSkuSelectPopup(type) {
     this.setData({
       buyType: type || 0,
@@ -284,6 +299,7 @@ Page({
     // this.handlePopupHide();
   },
 
+  // 更改购买数量
   changeNum(e) {
     this.setData({
       buyNum: e.detail.buyNum,
@@ -354,7 +370,7 @@ Page({
   //   });
   // },
 
-  // 获取商品详情信息
+  // 获取商品详情信息 活动信息
   getDetail(spuId) {
     Promise.all([fetchGood(spuId), fetchActivityList()]).then((res) => { 
       const productInfo = res[0].productSpu;
@@ -399,6 +415,7 @@ Page({
     });
   },
 
+  // 获取评论信息
   async getCommentsList() {
     try {
       const code = 'Success';
@@ -424,6 +441,37 @@ Page({
       console.error('comments error:', error);
     }
   },
+    // 获取评价统计
+    async getCommentsStatistics() {
+      try {
+        const code = 'Success';
+        const data = await getGoodsDetailsCommentsCount();
+        if (code.toUpperCase() === 'SUCCESS') {
+          const {
+            badCount,
+            commentCount,
+            goodCount,
+            goodRate,
+            hasImageCount,
+            middleCount,
+          } = data;
+          const nextState = {
+            commentsStatistics: {
+              badCount: parseInt(`${badCount}`),
+              commentCount: parseInt(`${commentCount}`),
+              goodCount: parseInt(`${goodCount}`),
+              /** 后端返回百分比后数据但没有限制位数 */
+              goodRate: Math.floor(goodRate * 10) / 10,
+              hasImageCount: parseInt(`${hasImageCount}`),
+              middleCount: parseInt(`${middleCount}`),
+            },
+          };
+          this.setData(nextState);
+        }
+      } catch (error) {
+        console.error('comments statiistics error:', error);
+      }
+    },
 
   onShareAppMessage() {
     // 自定义的返回信息
@@ -439,38 +487,6 @@ Page({
       path: `/pages/goods/productInfo/index?spuId=${this.data.spuId}`,
     };
     return customInfo;
-  },
-
-  /** 获取评价统计 */
-  async getCommentsStatistics() {
-    try {
-      const code = 'Success';
-      const data = await getGoodsDetailsCommentsCount();
-      if (code.toUpperCase() === 'SUCCESS') {
-        const {
-          badCount,
-          commentCount,
-          goodCount,
-          goodRate,
-          hasImageCount,
-          middleCount,
-        } = data;
-        const nextState = {
-          commentsStatistics: {
-            badCount: parseInt(`${badCount}`),
-            commentCount: parseInt(`${commentCount}`),
-            goodCount: parseInt(`${goodCount}`),
-            /** 后端返回百分比后数据但没有限制位数 */
-            goodRate: Math.floor(goodRate * 10) / 10,
-            hasImageCount: parseInt(`${hasImageCount}`),
-            middleCount: parseInt(`${middleCount}`),
-          },
-        };
-        this.setData(nextState);
-      }
-    } catch (error) {
-      console.error('comments statiistics error:', error);
-    }
   },
 
   /** 跳转到评价列表 */
