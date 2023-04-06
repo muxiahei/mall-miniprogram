@@ -17,10 +17,6 @@ function mockFetchHome() {
           key: 1,
         },
         {
-          text: '二胎大作战',
-          key: 2,
-        },
-        {
           text: '人气榜',
           key: 3,
         },
@@ -61,10 +57,6 @@ export function fetchHome() {
       {
         text: '猜你喜欢',
         key: 2,
-      },
-      {
-        text: '二胎大作战',
-        key: 3,
       },
       {
         text: '人气榜',

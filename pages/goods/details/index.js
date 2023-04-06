@@ -6,8 +6,8 @@ import { getGoodsDetailsCommentList, getGoodsDetailsCommentsCount, } from '../..
 import { cdnBase } from '../../../config/index';
 
 const imgPrefix = `${cdnBase}/`;
-const recLeftImg = `${imgPrefix}common/rec-left.png`;
-const recRightImg = `${imgPrefix}common/rec-right.png`;
+const recLeftImg = `https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-mp/common/rec-left.png`;
+const recRightImg = `https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-mp/common/rec-right.png`;
 const obj2Params = (obj = {}, encode = false) => {
   const result = [];
   Object.keys(obj).forEach((key) =>
@@ -22,12 +22,12 @@ Page({
     commentsList: [],
     // 评论统计
     commentsStatistics: {
-      badCount: 0,
-      commentCount: 0,
-      goodCount: 0,
-      goodRate: 0,
+      badCount: 3,
+      commentCount: 20,
+      goodCount: 5,
+      goodRate: 10,
       hasImageCount: 0,
-      middleCount: 0,
+      middleCount: 2,
     },
     
     // 活动列表

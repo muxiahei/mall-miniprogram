@@ -94,11 +94,11 @@
   </view>
   <!-- 商品描述内容 -->
   <view class="desc-content">
-    <!-- <view class="desc-content__details" wx:if="{{productInfo.descript.length > 0}}">
+    <view class="desc-content__title" wx:if="{{productInfo.descript.length > 0}}">
       <t-image t-class="img" src="{{recLeftImg}}" />
-      <span class="desc-content__details--text">详情介绍</span>
+      <span class="desc-content__title--text">详情介绍</span>
       <t-image t-class="img" src="{{recRightImg}}" />
-    </view> -->
+    </view>
     <view wx:if="{{productInfo.descript.length > 0}}" wx:for="{{productInfo.descript}}" wx:key="index">
       <t-image t-class="desc-content__img" src="{{item}}" mode="widthFix" />
     </view>

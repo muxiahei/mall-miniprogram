@@ -1,4 +1,4 @@
-import { config } from '../../config/index';
+import { config,baseUrl } from '../../config/index';
 
 /** 获取商品详情页评论数 */
 function mockFetchGoodDetailsCommentsCount(spuId = 0) {
@@ -32,6 +32,28 @@ export function getGoodsDetailsCommentList(spuId = 0) {
     return mockFetchGoodDetailsCommentList(spuId);
   }
   return new Promise((resolve) => {
-    resolve('real api');
+    wx.request({
+      url: baseUrl + '/comments',
+      data: {
+        productId: spuId
+      },
+      header: {
+        'content-type': 'application/json'
+      },
+      complete: (res) => {
+        if (res.statusCode >= 200 && res.statusCode < 300) {
+          const spuList = [];
+          const array = res.data.data.list
+          for (let index = 0; index < array.length; index++) {
+            const spu = {};
+          }
+          resolve(
+            array
+          )
+        } else {
+          reject(res)
+        }
+      }
+    })
   });
 }
