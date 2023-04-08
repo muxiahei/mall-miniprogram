@@ -3,6 +3,8 @@ export const config = {
   useMock: false,
 };
 export const baseUrl = 'http://localhost:8089/mall';
+export const order = 'http://localhost:8090/mall';
+
 
 export const cdnBase =
   'https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-mp';

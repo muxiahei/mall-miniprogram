@@ -30,12 +30,12 @@ const allGoods = [
     ],
     specList: [
       {
-        specId: '10011',
+        spgId: '10011',
         productName: '颜色',
-        specValueList: [
+        specParamList: [
           {
-            specValueId: '10012',
-            specId: null,
+            sppId: '10012',
+            spgId: null,
             saasId: null,
             specValue: '米色荷叶边',
             image: null,
@@ -43,26 +43,26 @@ const allGoods = [
         ],
       },
       {
-        specId: '10013',
+        spgId: '10013',
         productName: '尺码',
-        specValueList: [
+        specParamList: [
           {
-            specValueId: '11014',
-            specId: null,
+            sppId: '11014',
+            spgId: null,
             saasId: null,
             specValue: 'S',
             image: null,
           },
           {
-            specValueId: '10014',
-            specId: null,
+            sppId: '10014',
+            spgId: null,
             saasId: null,
             specValue: 'M',
             image: null,
           },
           {
-            specValueId: '11013',
-            specId: null,
+            sppId: '11013',
+            spgId: null,
             saasId: null,
             specValue: 'L',
             image: null,
@@ -76,15 +76,15 @@ const allGoods = [
         skuImage: 'https://cdn-we-retail.ym.tencent.com/tsr/goods/nz-09a.png',
         specInfo: [
           {
-            specId: '10011',
+            spgId: '10011',
             specTitle: null,
-            specValueId: '10012',
+            sppId: '10012',
             specValue: null,
           },
           {
-            specId: '10013',
+            spgId: '10013',
             specTitle: null,
-            specValueId: '11014',
+            sppId: '11014',
             specValue: null,
           },
         ],
@@ -106,15 +106,15 @@ const allGoods = [
         skuImage: 'https://cdn-we-retail.ym.tencent.com/tsr/goods/nz-09a.png',
         specInfo: [
           {
-            specId: '10011',
+            spgId: '10011',
             specTitle: null,
-            specValueId: '10012',
+            sppId: '10012',
             specValue: null,
           },
           {
-            specId: '10013',
+            spgId: '10013',
             specTitle: null,
-            specValueId: '11013',
+            sppId: '11013',
             specValue: null,
           },
         ],
@@ -136,15 +136,15 @@ const allGoods = [
         skuImage: 'https://cdn-we-retail.ym.tencent.com/tsr/goods/nz-09a.png',
         specInfo: [
           {
-            specId: '10011',
+            spgId: '10011',
             specTitle: null,
-            specValueId: '10012',
+            sppId: '10012',
             specValue: null,
           },
           {
-            specId: '10013',
+            spgId: '10013',
             specTitle: null,
-            specValueId: '10014',
+            sppId: '10014',
             specValue: null,
           },
         ],
@@ -204,15 +204,15 @@ const allGoods = [
         skuImage: null,
         specInfo: [
           {
-            specId: '10000',
+            spgId: '10000',
             specTitle: null,
-            specValueId: '10001',
+            sppId: '10001',
             specValue: '白色',
           },
           {
-            specId: '10002',
+            spgId: '10002',
             specTitle: null,
-            specValueId: '10003',
+            sppId: '10003',
             specValue: 'M',
           },
         ],
@@ -242,15 +242,15 @@ const allGoods = [
         skuImage: null,
         specInfo: [
           {
-            specId: '10000',
+            spgId: '10000',
             specTitle: null,
-            specValueId: '10001',
+            sppId: '10001',
             specValue: '白色',
           },
           {
-            specId: '10002',
+            spgId: '10002',
             specTitle: null,
-            specValueId: '11003',
+            sppId: '11003',
             specValue: 'S',
           },
         ],
@@ -280,15 +280,15 @@ const allGoods = [
         skuImage: null,
         specInfo: [
           {
-            specId: '10000',
+            spgId: '10000',
             specTitle: null,
-            specValueId: '10001',
+            sppId: '10001',
             specValue: '白色',
           },
           {
-            specId: '10002',
+            spgId: '10002',
             specTitle: null,
-            specValueId: '11002',
+            sppId: '11002',
             specValue: 'L',
           },
         ],
@@ -320,12 +320,12 @@ const allGoods = [
     isPutOnSale: 1,
     specList: [
       {
-        specId: '10000',
+        spgId: '10000',
         productName: '颜色',
-        specValueList: [
+        specParamList: [
           {
-            specValueId: '10001',
-            specId: '10000',
+            sppId: '10001',
+            spgId: '10000',
             saasId: '88888888',
             specValue: '白色',
             image: '',
@@ -333,26 +333,26 @@ const allGoods = [
         ],
       },
       {
-        specId: '10002',
+        spgId: '10002',
         productName: '尺码',
-        specValueList: [
+        specParamList: [
           {
-            specValueId: '11003',
-            specId: '10002',
+            sppId: '11003',
+            spgId: '10002',
             saasId: '88888888',
             specValue: 'S',
             image: '',
           },
           {
-            specValueId: '10003',
-            specId: '10002',
+            sppId: '10003',
+            spgId: '10002',
             saasId: '88888888',
             specValue: 'M',
             image: '',
           },
           {
-            specValueId: '11002',
-            specId: '10002',
+            sppId: '11002',
+            spgId: '10002',
             saasId: '88888888',
             specValue: 'L',
             image: '',
@@ -399,15 +399,15 @@ const allGoods = [
         skuImage: null,
         specInfo: [
           {
-            specId: '127904180600844800',
+            spgId: '127904180600844800',
             specTitle: null,
-            specValueId: '127904180768617216',
+            sppId: '127904180768617216',
             specValue: '军绿色',
           },
           {
-            specId: '127904861604820480',
+            spgId: '127904861604820480',
             specTitle: null,
-            specValueId: '127904862494014208',
+            sppId: '127904862494014208',
             specValue: 'XS',
           },
         ],
@@ -437,15 +437,15 @@ const allGoods = [
         skuImage: null,
         specInfo: [
           {
-            specId: '127904180600844800',
+            spgId: '127904180600844800',
             specTitle: null,
-            specValueId: '127904180768617216',
+            sppId: '127904180768617216',
             specValue: '军绿色',
           },
           {
-            specId: '127904861604820480',
+            spgId: '127904861604820480',
             specTitle: null,
-            specValueId: '127904862007474176',
+            sppId: '127904862007474176',
             specValue: 'M',
           },
         ],
@@ -475,15 +475,15 @@ const allGoods = [
         skuImage: null,
         specInfo: [
           {
-            specId: '127904180600844800',
+            spgId: '127904180600844800',
             specTitle: null,
-            specValueId: '127904180768617216',
+            sppId: '127904180768617216',
             specValue: '军绿色',
           },
           {
-            specId: '127904861604820480',
+            spgId: '127904861604820480',
             specTitle: null,
-            specValueId: '127904862175246592',
+            sppId: '127904862175246592',
             specValue: 'S',
           },
         ],
@@ -513,15 +513,15 @@ const allGoods = [
         skuImage: null,
         specInfo: [
           {
-            specId: '127904180600844800',
+            spgId: '127904180600844800',
             specTitle: null,
-            specValueId: '127904180768617216',
+            sppId: '127904180768617216',
             specValue: '军绿色',
           },
           {
-            specId: '127904861604820480',
+            spgId: '127904861604820480',
             specTitle: null,
-            specValueId: '127904861755815680',
+            sppId: '127904861755815680',
             specValue: 'L',
           },
         ],
@@ -553,12 +553,12 @@ const allGoods = [
     isPutOnSale: 1,
     specList: [
       {
-        specId: '127904180600844800',
+        spgId: '127904180600844800',
         productName: '颜色',
-        specValueList: [
+        specParamList: [
           {
-            specValueId: '127904180768617216',
-            specId: '127904180600844800',
+            sppId: '127904180768617216',
+            spgId: '127904180600844800',
             saasId: '88888888',
             specValue: '军绿色',
             image: '',
@@ -566,33 +566,33 @@ const allGoods = [
         ],
       },
       {
-        specId: '127904861604820480',
+        spgId: '127904861604820480',
         productName: '尺码',
-        specValueList: [
+        specParamList: [
           {
-            specValueId: '127904862494014208',
-            specId: '127904861604820480',
+            sppId: '127904862494014208',
+            spgId: '127904861604820480',
             saasId: '88888888',
             specValue: 'XS',
             image: '',
           },
           {
-            specValueId: '127904862175246592',
-            specId: '127904861604820480',
+            sppId: '127904862175246592',
+            spgId: '127904861604820480',
             saasId: '88888888',
             specValue: 'S',
             image: '',
           },
           {
-            specValueId: '127904862007474176',
-            specId: '127904861604820480',
+            sppId: '127904862007474176',
+            spgId: '127904861604820480',
             saasId: '88888888',
             specValue: 'M',
             image: '',
           },
           {
-            specValueId: '127904861755815680',
-            specId: '127904861604820480',
+            sppId: '127904861755815680',
+            spgId: '127904861604820480',
             saasId: '88888888',
             specValue: 'L',
             image: '',
@@ -650,15 +650,15 @@ const allGoods = [
         skuImage: null,
         specInfo: [
           {
-            specId: '10000',
+            spgId: '10000',
             specTitle: null,
-            specValueId: '10001',
+            sppId: '10001',
             specValue: '经典白',
           },
           {
-            specId: '10002',
+            spgId: '10002',
             specTitle: null,
-            specValueId: '10003',
+            sppId: '10003',
             specValue: '节能套装',
           },
         ],
@@ -688,15 +688,15 @@ const allGoods = [
         skuImage: null,
         specInfo: [
           {
-            specId: '10000',
+            spgId: '10000',
             specTitle: null,
-            specValueId: '11000',
+            sppId: '11000',
             specValue: '贵族青',
           },
           {
-            specId: '10002',
+            spgId: '10002',
             specTitle: null,
-            specValueId: '11003',
+            sppId: '11003',
             specValue: '经典套装',
           },
         ],
@@ -726,15 +726,15 @@ const allGoods = [
         skuImage: null,
         specInfo: [
           {
-            specId: '10000',
+            spgId: '10000',
             specTitle: null,
-            specValueId: '11000',
+            sppId: '11000',
             specValue: '经典白',
           },
           {
-            specId: '10002',
+            spgId: '10002',
             specTitle: null,
-            specValueId: '11002',
+            sppId: '11002',
             specValue: '尊享礼盒装',
           },
         ],
@@ -764,15 +764,15 @@ const allGoods = [
         skuImage: null,
         specInfo: [
           {
-            specId: '10000',
+            spgId: '10000',
             specTitle: null,
-            specValueId: '10001',
+            sppId: '10001',
             specValue: '经典白',
           },
           {
-            specId: '10002',
+            spgId: '10002',
             specTitle: null,
-            specValueId: '11003',
+            sppId: '11003',
             specValue: 'S',
           },
         ],
@@ -802,15 +802,15 @@ const allGoods = [
         skuImage: null,
         specInfo: [
           {
-            specId: '10000',
+            spgId: '10000',
             specTitle: null,
-            specValueId: '10001',
+            sppId: '10001',
             specValue: '经典白',
           },
           {
-            specId: '10002',
+            spgId: '10002',
             specTitle: null,
-            specValueId: '11002',
+            sppId: '11002',
             specValue: '尊享礼盒装',
           },
         ],
@@ -840,15 +840,15 @@ const allGoods = [
         skuImage: null,
         specInfo: [
           {
-            specId: '10000',
+            spgId: '10000',
             specTitle: null,
-            specValueId: '11000',
+            sppId: '11000',
             specValue: '贵族青',
           },
           {
-            specId: '10002',
+            spgId: '10002',
             specTitle: null,
-            specValueId: '10003',
+            sppId: '10003',
             specValue: '节能套装',
           },
         ],
@@ -884,19 +884,19 @@ const allGoods = [
     ],
     specList: [
       {
-        specId: '10000',
+        spgId: '10000',
         productName: '颜色',
-        specValueList: [
+        specParamList: [
           {
-            specValueId: '10001',
-            specId: '10000',
+            sppId: '10001',
+            spgId: '10000',
             saasId: '88888888',
             specValue: '经典白',
             image: '',
           },
           {
-            specValueId: '11000',
-            specId: '10000',
+            sppId: '11000',
+            spgId: '10000',
             saasId: '88888888',
             specValue: '贵族青',
             image: '',
@@ -904,26 +904,26 @@ const allGoods = [
         ],
       },
       {
-        specId: '10002',
+        spgId: '10002',
         productName: '尺码',
-        specValueList: [
+        specParamList: [
           {
-            specValueId: '11003',
-            specId: '10002',
+            sppId: '11003',
+            spgId: '10002',
             saasId: '88888888',
             specValue: '经典套装',
             image: '',
           },
           {
-            specValueId: '10003',
-            specId: '10002',
+            sppId: '10003',
+            spgId: '10002',
             saasId: '88888888',
             specValue: '节能套装',
             image: '',
           },
           {
-            specValueId: '11002',
-            specId: '10002',
+            sppId: '11002',
+            spgId: '10002',
             saasId: '88888888',
             specValue: '尊享礼盒装',
             image: '',
@@ -982,15 +982,15 @@ const allGoods = [
         skuImage: null,
         specInfo: [
           {
-            specId: '127904180600844800',
+            spgId: '127904180600844800',
             specTitle: null,
-            specValueId: '127904181322265856',
+            sppId: '127904181322265856',
             specValue: '浅灰色',
           },
           {
-            specId: '127904861604820480',
+            spgId: '127904861604820480',
             specTitle: null,
-            specValueId: '127904862175246592',
+            sppId: '127904862175246592',
             specValue: 'S',
           },
         ],
@@ -1020,15 +1020,15 @@ const allGoods = [
         skuImage: null,
         specInfo: [
           {
-            specId: '127904180600844800',
+            spgId: '127904180600844800',
             specTitle: null,
-            specValueId: '127904181322265856',
+            sppId: '127904181322265856',
             specValue: '浅灰色',
           },
           {
-            specId: '127904861604820480',
+            spgId: '127904861604820480',
             specTitle: null,
-            specValueId: '127904861755815680',
+            sppId: '127904861755815680',
             specValue: 'L',
           },
         ],
@@ -1058,15 +1058,15 @@ const allGoods = [
         skuImage: null,
         specInfo: [
           {
-            specId: '127904180600844800',
+            spgId: '127904180600844800',
             specTitle: null,
-            specValueId: '127904181322265856',
+            sppId: '127904181322265856',
             specValue: '浅灰色',
           },
           {
-            specId: '127904861604820480',
+            spgId: '127904861604820480',
             specTitle: null,
-            specValueId: '127904862007474176',
+            sppId: '127904862007474176',
             specValue: 'M',
           },
         ],
@@ -1102,12 +1102,12 @@ const allGoods = [
     isPutOnSale: 1,
     specList: [
       {
-        specId: '127904180600844800',
+        spgId: '127904180600844800',
         productName: '颜色',
-        specValueList: [
+        specParamList: [
           {
-            specValueId: '127904181322265856',
-            specId: '127904180600844800',
+            sppId: '127904181322265856',
+            spgId: '127904180600844800',
             saasId: '88888888',
             specValue: '浅灰色',
             image: '',
@@ -1115,26 +1115,26 @@ const allGoods = [
         ],
       },
       {
-        specId: '127904861604820480',
+        spgId: '127904861604820480',
         productName: '尺码',
-        specValueList: [
+        specParamList: [
           {
-            specValueId: '127904862175246592',
-            specId: '127904861604820480',
+            sppId: '127904862175246592',
+            spgId: '127904861604820480',
             saasId: '88888888',
             specValue: 'S',
             image: '',
           },
           {
-            specValueId: '127904862007474176',
-            specId: '127904861604820480',
+            sppId: '127904862007474176',
+            spgId: '127904861604820480',
             saasId: '88888888',
             specValue: 'M',
             image: '',
           },
           {
-            specValueId: '127904861755815680',
-            specId: '127904861604820480',
+            sppId: '127904861755815680',
+            spgId: '127904861604820480',
             saasId: '88888888',
             specValue: 'L',
             image: '',
@@ -1189,15 +1189,15 @@ const allGoods = [
         skuImage: null,
         specInfo: [
           {
-            specId: '10006',
+            spgId: '10006',
             specTitle: null,
-            specValueId: '10007',
+            sppId: '10007',
             specValue: '黑色',
           },
           {
-            specId: '11007',
+            spgId: '11007',
             specTitle: null,
-            specValueId: '10009',
+            sppId: '10009',
             specValue: '简约款',
           },
         ],
@@ -1227,15 +1227,15 @@ const allGoods = [
         skuImage: null,
         specInfo: [
           {
-            specId: '10006',
+            spgId: '10006',
             specTitle: null,
-            specValueId: '10007',
+            sppId: '10007',
             specValue: '黑色',
           },
           {
-            specId: '11007',
+            spgId: '11007',
             specTitle: null,
-            specValueId: '10008',
+            sppId: '10008',
             specValue: '礼盒装',
           },
         ],
@@ -1265,15 +1265,15 @@ const allGoods = [
         skuImage: null,
         specInfo: [
           {
-            specId: '10006',
+            spgId: '10006',
             specTitle: null,
-            specValueId: '10007',
+            sppId: '10007',
             specValue: '黑色',
           },
           {
-            specId: '11007',
+            spgId: '11007',
             specTitle: null,
-            specValueId: '11008',
+            sppId: '11008',
             specValue: '带充电线简约款',
           },
         ],
@@ -1309,12 +1309,12 @@ const allGoods = [
     isPutOnSale: 1,
     specList: [
       {
-        specId: '10006',
+        spgId: '10006',
         productName: '颜色',
-        specValueList: [
+        specParamList: [
           {
-            specValueId: '10007',
-            specId: '10006',
+            sppId: '10007',
+            spgId: '10006',
             saasId: '88888888',
             specValue: '黑色',
             image: '',
@@ -1322,26 +1322,26 @@ const allGoods = [
         ],
       },
       {
-        specId: '11007',
+        spgId: '11007',
         productName: '类型',
-        specValueList: [
+        specParamList: [
           {
-            specValueId: '10009',
-            specId: '11007',
+            sppId: '10009',
+            spgId: '11007',
             saasId: '88888888',
             specValue: '简约款',
             image: '',
           },
           {
-            specValueId: '11008',
-            specId: '11007',
+            sppId: '11008',
+            spgId: '11007',
             saasId: '88888888',
             specValue: '带充电线简约款',
             image: '',
           },
           {
-            specValueId: '10008',
-            specId: '11007',
+            sppId: '10008',
+            spgId: '11007',
             saasId: '88888888',
             specValue: '礼盒款',
             image: '',
@@ -1404,15 +1404,15 @@ const allGoods = [
         skuImage: null,
         specInfo: [
           {
-            specId: '127904180600844800',
+            spgId: '127904180600844800',
             specTitle: null,
-            specValueId: '127904181506815488',
+            sppId: '127904181506815488',
             specValue: '奶黄色',
           },
           {
-            specId: '127904861604820480',
+            spgId: '127904861604820480',
             specTitle: null,
-            specValueId: '127904862175246592',
+            sppId: '127904862175246592',
             specValue: '单盘',
           },
         ],
@@ -1442,15 +1442,15 @@ const allGoods = [
         skuImage: null,
         specInfo: [
           {
-            specId: '127904180600844800',
+            spgId: '127904180600844800',
             specTitle: null,
-            specValueId: '127904181506815488',
+            sppId: '127904181506815488',
             specValue: '奶黄色',
           },
           {
-            specId: '127904861604820480',
+            spgId: '127904861604820480',
             specTitle: null,
-            specValueId: '127904861755815680',
+            sppId: '127904861755815680',
             specValue: '盘+碗',
           },
         ],
@@ -1480,15 +1480,15 @@ const allGoods = [
         skuImage: null,
         specInfo: [
           {
-            specId: '127904180600844800',
+            spgId: '127904180600844800',
             specTitle: null,
-            specValueId: '127904181506815488',
+            sppId: '127904181506815488',
             specValue: '奶黄色',
           },
           {
-            specId: '127904861604820480',
+            spgId: '127904861604820480',
             specTitle: null,
-            specValueId: '127904862007474176',
+            sppId: '127904862007474176',
             specValue: '单盘',
           },
         ],
@@ -1520,12 +1520,12 @@ const allGoods = [
     isPutOnSale: 1,
     specList: [
       {
-        specId: '127904180600844800',
+        spgId: '127904180600844800',
         productName: '颜色',
-        specValueList: [
+        specParamList: [
           {
-            specValueId: '127904181506815488',
-            specId: '127904180600844800',
+            sppId: '127904181506815488',
+            spgId: '127904180600844800',
             saasId: '88888888',
             specValue: '奶黄色',
             image: '',
@@ -1533,26 +1533,26 @@ const allGoods = [
         ],
       },
       {
-        specId: '127904861604820480',
+        spgId: '127904861604820480',
         productName: '类型',
-        specValueList: [
+        specParamList: [
           {
-            specValueId: '127904862175246592',
-            specId: '127904861604820480',
+            sppId: '127904862175246592',
+            spgId: '127904861604820480',
             saasId: '88888888',
             specValue: '单盘',
             image: '',
           },
           {
-            specValueId: '127904862007474176',
-            specId: '127904861604820480',
+            sppId: '127904862007474176',
+            spgId: '127904861604820480',
             saasId: '88888888',
             specValue: '单碗',
             image: '',
           },
           {
-            specValueId: '127904861755815680',
-            specId: '127904861604820480',
+            sppId: '127904861755815680',
+            spgId: '127904861604820480',
             saasId: '88888888',
             specValue: '盘+碗',
             image: '',
@@ -1591,12 +1591,12 @@ const allGoods = [
     ],
     specList: [
       {
-        specId: '127904180600844800',
+        spgId: '127904180600844800',
         productName: '颜色',
-        specValueList: [
+        specParamList: [
           {
-            specValueId: '127904180768617216',
-            specId: null,
+            sppId: '127904180768617216',
+            spgId: null,
             saasId: null,
             specValue: '奶黄色',
             image: null,
@@ -1604,26 +1604,26 @@ const allGoods = [
         ],
       },
       {
-        specId: '127904861604820480',
+        spgId: '127904861604820480',
         productName: '数量',
-        specValueList: [
+        specParamList: [
           {
-            specValueId: '127904862175246592',
-            specId: null,
+            sppId: '127904862175246592',
+            spgId: null,
             saasId: null,
             specValue: '三件套',
             image: null,
           },
           {
-            specValueId: '127904862007474176',
-            specId: null,
+            sppId: '127904862007474176',
+            spgId: null,
             saasId: null,
             specValue: '六件套',
             image: null,
           },
           {
-            specValueId: '127904861755815680',
-            specId: null,
+            sppId: '127904861755815680',
+            spgId: null,
             saasId: null,
             specValue: '八件套',
             image: null,
@@ -1637,15 +1637,15 @@ const allGoods = [
         skuImage: null,
         specInfo: [
           {
-            specId: '127904180600844800',
+            spgId: '127904180600844800',
             specTitle: null,
-            specValueId: '127904180768617216',
+            sppId: '127904180768617216',
             specValue: null,
           },
           {
-            specId: '127904861604820480',
+            spgId: '127904861604820480',
             specTitle: null,
-            specValueId: '127904862175246592',
+            sppId: '127904862175246592',
             specValue: null,
           },
         ],
@@ -1667,15 +1667,15 @@ const allGoods = [
         skuImage: null,
         specInfo: [
           {
-            specId: '127904180600844800',
+            spgId: '127904180600844800',
             specTitle: null,
-            specValueId: '127904180768617216',
+            sppId: '127904180768617216',
             specValue: null,
           },
           {
-            specId: '127904861604820480',
+            spgId: '127904861604820480',
             specTitle: null,
-            specValueId: '127904861755815680',
+            sppId: '127904861755815680',
             specValue: null,
           },
         ],
@@ -1697,15 +1697,15 @@ const allGoods = [
         skuImage: null,
         specInfo: [
           {
-            specId: '127904180600844800',
+            spgId: '127904180600844800',
             specTitle: null,
-            specValueId: '127904180768617216',
+            sppId: '127904180768617216',
             specValue: null,
           },
           {
-            specId: '127904861604820480',
+            spgId: '127904861604820480',
             specTitle: null,
-            specValueId: '127904862007474176',
+            sppId: '127904862007474176',
             specValue: null,
           },
         ],
@@ -1754,12 +1754,12 @@ const allGoods = [
     ],
     specList: [
       {
-        specId: '127904180600844800',
+        spgId: '127904180600844800',
         productName: '颜色',
-        specValueList: [
+        specParamList: [
           {
-            specValueId: '127904181322265856',
-            specId: null,
+            sppId: '127904181322265856',
+            spgId: null,
             saasId: null,
             specValue: '浅灰色',
             image: null,
@@ -1767,26 +1767,26 @@ const allGoods = [
         ],
       },
       {
-        specId: '127904861604820480',
+        spgId: '127904861604820480',
         productName: '尺码',
-        specValueList: [
+        specParamList: [
           {
-            specValueId: '127904862175246592',
-            specId: null,
+            sppId: '127904862175246592',
+            spgId: null,
             saasId: null,
             specValue: 'S',
             image: null,
           },
           {
-            specValueId: '127904862007474176',
-            specId: null,
+            sppId: '127904862007474176',
+            spgId: null,
             saasId: null,
             specValue: 'M',
             image: null,
           },
           {
-            specValueId: '127904861755815680',
-            specId: null,
+            sppId: '127904861755815680',
+            spgId: null,
             saasId: null,
             specValue: 'L',
             image: null,
@@ -1800,15 +1800,15 @@ const allGoods = [
         skuImage: 'https://cdn-we-retail.ym.tencent.com/tsr/goods/muy-3a.png',
         specInfo: [
           {
-            specId: '127904180600844800',
+            spgId: '127904180600844800',
             specTitle: null,
-            specValueId: '127904181322265856',
+            sppId: '127904181322265856',
             specValue: null,
           },
           {
-            specId: '127904861604820480',
+            spgId: '127904861604820480',
             specTitle: null,
-            specValueId: '127904862175246592',
+            sppId: '127904862175246592',
             specValue: null,
           },
         ],
@@ -1830,15 +1830,15 @@ const allGoods = [
         skuImage: 'https://cdn-we-retail.ym.tencent.com/tsr/goods/muy-3a.png',
         specInfo: [
           {
-            specId: '127904180600844800',
+            spgId: '127904180600844800',
             specTitle: null,
-            specValueId: '127904181322265856',
+            sppId: '127904181322265856',
             specValue: null,
           },
           {
-            specId: '127904861604820480',
+            spgId: '127904861604820480',
             specTitle: null,
-            specValueId: '127904861755815680',
+            sppId: '127904861755815680',
             specValue: null,
           },
         ],
@@ -1860,15 +1860,15 @@ const allGoods = [
         skuImage: 'https://cdn-we-retail.ym.tencent.com/tsr/goods/muy-3a.png',
         specInfo: [
           {
-            specId: '127904180600844800',
+            spgId: '127904180600844800',
             specTitle: null,
-            specValueId: '127904181322265856',
+            sppId: '127904181322265856',
             specValue: null,
           },
           {
-            specId: '127904861604820480',
+            spgId: '127904861604820480',
             specTitle: null,
-            specValueId: '127904862007474176',
+            sppId: '127904862007474176',
             specValue: null,
           },
         ],

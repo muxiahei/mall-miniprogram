@@ -1,8 +1,8 @@
 import { mockIp, mockReqId } from '../../utils/mock';
 
 export const transformGoodsDataToConfirmData = (goodsDataList) => {
-  const list = [];
 
+  const list = [];
   goodsDataList.forEach((goodsData) => {
     list.push({
       storeId: goodsData.storeId,
@@ -43,12 +43,16 @@ export function genSettleDetail(params) {
     data: {
       settleType: 0,
       userAddress: null,
-      totalGoodsCount: 3,
+      // 总共的商品数量
+      totalGoodsCount: 0,
+      // 包裹数量
       packageCount: 1,
       totalAmount: '289997',
       totalPayAmount: '',
       totalDiscountAmount: '110000',
-      totalPromotionAmount: '1100',
+      // 活动优惠
+      totalPromotionAmount: '0',
+      // 优惠卷优惠
       totalCouponAmount: '0',
       totalSalePrice: '289997',
       totalGoodsAmount: '289997',
@@ -59,7 +63,7 @@ export function genSettleDetail(params) {
       storeGoodsList: [
         {
           storeId: '1000',
-          storeName: '云Mall深圳旗舰店',
+          storeName: 'Mall旗舰店',
           remark: null,
           goodsCount: 1,
           deliveryFee: '0',
@@ -117,6 +121,12 @@ export function genSettleDetail(params) {
     return pre + cur.quantity * Number(cur.settlePrice);
   }, 0);
 
+  // 计算总数量
+  const totalGoodsCount = list.reduce((pre, cur) => {
+    return pre + Number(cur.quantity);
+  }, 0);
+resp.data.totalGoodsCount = totalGoodsCount;
+
   // 计算折扣
   const totalDiscountPrice =
     discountPrice.length > 0
@@ -136,8 +146,7 @@ export function genSettleDetail(params) {
 
   resp.data.totalCouponAmount = totalDiscountPrice;
 
-  resp.data.totalPayAmount =
-    totalPrice - totalDiscountPrice - Number(resp.data.totalPromotionAmount);
+  resp.data.totalPayAmount = totalPrice - totalDiscountPrice - Number(resp.data.totalPromotionAmount);
 
   if (userAddressReq) {
     resp.data.settleType = 1;

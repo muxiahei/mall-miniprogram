@@ -122,10 +122,10 @@
   <goods-specs-popup
     id="goodsSpecsPopup"
     show="{{isSpuSelectPopupShow}}"
-    details="{{productInfo.productName || ''}}"
+    title="{{productInfo.productName || ''}}"
     src="{{specImg ? specImg : primaryImage}}"
     specList="{{productInfo.specList || []}}"
-    skuList="{{skuArray}}"
+    skuList="{{skuList}}"
     limitBuyInfo="{{productInfo.limitInfo[0].text || ''}}"
     bind:closeSpecsPopup="handlePopupHide"
     bind:change="chooseSpecItem"
