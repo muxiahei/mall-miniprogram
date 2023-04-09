@@ -9,11 +9,14 @@ const initFilters = {
 
 Page({
   data: {
+    categoryId: '',
     goodsList: [],
     layout: 0,
+    // 按照哪个排序 0：综合 1：价格
     sorts: '',
     overall: 1,
     show: false,
+    // 筛选最低价格，最高价格
     minVal: '',
     maxVal: '',
     filter: initFilters,
@@ -22,13 +25,13 @@ Page({
     loading: true,
   },
 
-  pageNum: 1,
+  pageCurrent: 1,
   pageSize: 30,
   total: 0,
 
   handleFilterChange(e) {
     const { layout, overall, sorts } = e.detail;
-    this.pageNum = 1;
+    this.pageCurrent = 1;
     this.setData({
       layout,
       sorts,
@@ -40,13 +43,15 @@ Page({
 
   generalQueryData(reset = false) {
     const { filter, keywords, minVal, maxVal } = this.data;
-    const { pageNum, pageSize } = this;
+    const { pageCurrent, pageSize } = this;
     const { sorts, overall } = filter;
     const params = {
-      sort: 0, // 0 综合，1 价格
-      pageNum: 1,
+      // 按哪个排序 0 综合，1 价格
+      sort: 0,
+      pageCurrent: 1,
       pageSize: 30,
       keyword: keywords,
+      categoryId: this.data.categoryId ? this.data.categoryId: ""
     };
 
     if (sorts) {
@@ -64,7 +69,7 @@ Page({
     if (reset) return params;
     return {
       ...params,
-      pageNum: pageNum + 1,
+      pageCurrent: pageCurrent + 1,
       pageSize,
     };
   },
@@ -77,6 +82,8 @@ Page({
       loadMoreStatus: 1,
       loading: true,
     });
+    console.log("params");
+    console.log(params);
     try {
       const result = await fetchGoodsList(params);
       const code = 'Success';
@@ -99,7 +106,7 @@ Page({
 
         const _goodsList = reset ? spuList : goodsList.concat(spuList);
         const _loadMoreStatus = _goodsList.length === totalCount ? 2 : 0;
-        this.pageNum = params.pageNum || 1;
+        this.pageCurrent = params.pageCurrent || 1;
         this.total = totalCount;
         this.setData({
           goodsList: _goodsList,
@@ -124,7 +131,12 @@ Page({
     });
   },
 
-  onLoad() {
+  onLoad(options) {
+    if (options.categoryId) {
+      this.setData({
+        categoryId: options.categoryId,
+      })
+    }
     this.init(true);
   },
 
@@ -209,7 +221,7 @@ Page({
         message,
       });
     }
-    this.pageNum = 1;
+    this.pageCurrent = 1;
     this.setData(
       {
         show: false,

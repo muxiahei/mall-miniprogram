@@ -6,7 +6,6 @@ Page({
   async init() {
     try {
       const result = await getCategoryList();
-      console.log(result);
       this.setData({
         list: result,
       });
@@ -18,9 +17,9 @@ Page({
   onShow() {
     this.getTabBar().init();
   },
-  onChange() {
+  onChange(event) {
     wx.navigateTo({
-      url: '/pages/goods/list/index',
+      url: '/pages/goods/list/index' + "?categoryId=" + event.detail.item.categoryId,
     });
   },
   onLoad() {

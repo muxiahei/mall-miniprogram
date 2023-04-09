@@ -1,4 +1,5 @@
 <view class="goods-list-container">
+<!-- 顶部筛选 -->
   <filter
     wr-class="filter-container"
     bind:change="handleFilterChange"
@@ -7,6 +8,7 @@
     overall="{{overall}}"
     bind:showFilterPopup="showFilterPopup"
   >
+  <!-- 右侧筛选框 -->
     <filter-popup
       slot="filterPopup"
       show="{{show}}"
