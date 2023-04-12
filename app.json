@@ -17,7 +17,8 @@
     "pages/goods/comments/create/index",
 
     "pages/cart/index",
-
+    "pages/promotion-detail/index",
+    
     "pages/order/order-confirm/index",
     "pages/order/receipt/index",
     "pages/order/pay-result/index",

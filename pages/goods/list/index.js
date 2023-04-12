@@ -17,6 +17,7 @@ Page({
     overall: 1,
     show: false,
     // 筛选最低价格，最高价格
+    
     minVal: '',
     maxVal: '',
     filter: initFilters,

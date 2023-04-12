@@ -3,6 +3,7 @@
 
 <view class="cart-group">
   <view class="goods-wrap" wx:for="{{_storeGoods}}" wx:for-item="store" wx:for-index="si" wx:key="storeId">
+    <!-- 商家信息 -->
     <view class="cart-store">
       <t-icon
         size="40rpx"
@@ -20,7 +21,9 @@
         <view class="get-coupon" catch:tap="gotoCoupons">优惠券</view>
       </view>
     </view>
+
     <block wx:for="{{store.promotionGoodsList}}" wx:for-item="promotion" wx:for-index="promoindex" wx:key="promoindex">
+      <!-- 满减信息 -->
       <view
         class="promotion-wrap"
         wx:if="{{handlePromotion.hasPromotion(promotion.promotionCode)}}"
@@ -97,7 +100,7 @@
         <view class="promotion-line" />
       </view>
     </block>
-    <block wx:if="{{store.shortageGoodsList.length>0}}">
+    <block wx:if="{{store.shortageGoodsList.length > 0}}">
       <view
         class="goods-item"
         wx:for="{{store.shortageGoodsList}}"

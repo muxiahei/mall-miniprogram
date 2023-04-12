@@ -2,6 +2,7 @@ import Toast from 'tdesign-miniprogram/toast/index';
 import { fetchSettleDetail } from '../../../services/order/orderConfirm';
 import { commitPay, wechatPayOrder } from './pay';
 import { getAddressPromise } from '../../usercenter/address/list/util';
+import { config, orderUrl } from '../../../config/index';
 
 const stripeImg = `https://cdn-we-retail.ym.tencent.com/miniapp/order/stripe.png`;
 
@@ -394,13 +395,79 @@ Page({
     if (invoiceData && invoiceData.email) {
       params.invoiceRequest = invoiceData;
     }
-
+    console.log("params");
     console.log(params);
+//     goodsRequestList: Array(1)
+// 0:
+// available: true
+// goodsName: "白色短袖连衣裙荷叶边裙摆宽松韩版休闲纯白清爽优雅连衣裙"
+// price: 100
+// primaryImage: "https://cdn-we-retail.ym.tencent.com/tsr/goods/nz-09a.png"
+// quantity: 1
+// skuId: 2
+// specInfo: (2) [{…}, {…}]
+// spuId: 1
+// storeId: "1"
+// thumb: "https://cdn-we-retail.ym.tencent.com/tsr/goods/nz-09a.png"
+// title: "白色短袖连衣裙荷叶边裙摆宽松韩版休闲纯白清爽优雅连衣裙"
+// __proto__: Object
+// length: 1
+// nv_length: (...)
+// __proto__: Array(0)
+// invoiceRequest: null
+// storeInfoList: [{…}]
+// totalAmount: 100
+// userAddressReq:
+// address: "甘肃省甘南藏族自治州碌曲县松日鼎盛大厦0层0号"
+// addressId: "0"
+// addressTag: ""
+// authToken: null
+// checked: true
+// cityCode: "623000"
+// cityName: "甘南藏族自治州"
+// countryCode: "chn"
+// countryName: "中国"
+// detailAddress: "松日鼎盛大厦0层0号"
+// districtCode: "623026"
+// districtName: "碌曲县"
+// id: "0"
+// isDefault: 1
+// latitude: "34.59103"
+// longitude: "102.48699"
+// name: "测试用户0"
+// phone: "17612345678"
+// phoneNumber: "17612345678"
+// provinceCode: "620000"
+// provinceName: "甘肃省"
+// saasId: "88888888"
+// storeId: null
+// tag: ""
+// uid: "88888888205500"
+// __proto__: Object
+// userName: "测试用户0"
     // 提交到后端创建订单
-    
+    const data = {
+        userId: '',
+        paymentMethod: 5,
+        orderMoney: params.totalAmount,
+        districtMoney: params.totalAmount,
+        paymentMoney: params.totalAmount,
+        // payTime: new Date(),
+        province: params.userAddressReq.provinceName,
+        city: params.userAddressReq.cityName,
+        district: params.userAddressReq.districtName,
+        address: params.userAddressReq.address,
+
+        spuId: goodsRequestList[0].spuId,
+        skuId: goodsRequestList[0].skuId,
+        productName: goodsRequestList[0].goodsName,
+        productAmount: goodsRequestList[0].quantity,
+    }
     wx.request({
-      url: baseUrl + '/orders/',
-      // data: param,
+      url: orderUrl + '/orders/',
+      data: data,
+      method: "PUT",
+      dataType:"json",
       header: {
         'content-type': 'application/json' // 默认值 ,另一种是 "content-type": "application/x-www-form-urlencoded"
       },
@@ -409,22 +476,26 @@ Page({
       // },
       complete: (res) => {
         if (res.statusCode >= 200 && res.statusCode < 300) {
-          const array = res.data.data
-          for (let index = 0; index < array.length; index++) {
-            const element = array[index];
-            swiper.push(element.imgUrl);
-          }
+
+          Toast({
+            context: this,
+            selector: '#t-toast',
+            message: '购买成功',
+            duration: 1000,
+            icon: '',
+          });
+          setTimeout(() => {
+            wx.navigateTo({
+              url: `/pages/goods/details/index?spuId=${data.spuId}`,
+            });
+          }, 1000)
           resolve({
-            swiper,
-            tabList
          })
         } else {
           reject(res)
         }
       }
     })
-
-
 
     // 提交支付信息
     // commitPay(params).then(

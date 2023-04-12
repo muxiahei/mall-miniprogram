@@ -3,7 +3,7 @@ export const config = {
   useMock: false,
 };
 export const baseUrl = 'http://localhost:8089/mall';
-export const order = 'http://localhost:8090/mall';
+export const orderUrl = 'http://localhost:8090/mall';
 
 
 export const cdnBase =

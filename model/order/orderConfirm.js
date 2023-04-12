@@ -115,7 +115,7 @@ export function genSettleDetail(params) {
   }
 
   // 模拟计算场景
-
+  
   // 计算总价
   const totalPrice = list.reduce((pre, cur) => {
     return pre + cur.quantity * Number(cur.settlePrice);
@@ -143,11 +143,8 @@ resp.data.totalGoodsCount = totalGoodsCount;
       : 0;
 
   resp.data.totalSalePrice = totalPrice;
-
   resp.data.totalCouponAmount = totalDiscountPrice;
-
   resp.data.totalPayAmount = totalPrice - totalDiscountPrice - Number(resp.data.totalPromotionAmount);
-
   if (userAddressReq) {
     resp.data.settleType = 1;
     resp.data.userAddress = userAddressReq;

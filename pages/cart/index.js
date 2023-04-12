@@ -70,6 +70,8 @@ Page({
     let currentActivity;
     let currentGoods;
     const { storeGoods } = this.data.cartGroupData;
+    console.log("storeGoods");
+    console.log(storeGoods);
     for (const store of storeGoods) {
       for (const activity of store.promotionGoodsList) {
         for (const goods of activity.goodsPromotionList) {
@@ -95,9 +97,11 @@ Page({
 
   // 注：实际场景时应该调用接口获取购物车数据
   getCartGroupData() {
+    const aa = fetchCartGroupData();
+    console.log(aa);
     const { cartGroupData } = this.data;
     if (!cartGroupData) {
-      return fetchCartGroupData();
+      return aa;
     }
     return Promise.resolve({ data: cartGroupData });
   },
