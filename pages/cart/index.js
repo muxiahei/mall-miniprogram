@@ -17,11 +17,12 @@ Page({
   },
 
   refreshData() {
-    this.getCartGroupData().then((res) => {
+    this.getCartGroupData().then(res => {
       let isEmpty = true;
       const cartGroupData = res.data;
       // 一些组件中需要的字段可能接口并没有返回，或者返回的数据结构与预期不一致，需要在此先对数据做一些处理
       // 统计门店下加购的商品是否全选、是否存在缺货/无货
+
       for (const store of cartGroupData.storeGoods) {
         store.isSelected = true; // 该门店已加购商品是否全选
         store.storeStockShortage = false; // 该门店已加购商品是否存在库存不足
@@ -31,7 +32,6 @@ Page({
         for (const activity of store.promotionGoodsList) {
           activity.goodsPromotionList = activity.goodsPromotionList.filter((goods) => {
             goods.originPrice = undefined;
-
             // 统计是否有加购数大于库存数的商品
             if (goods.quantity > goods.stockQuantity) {
               store.storeStockShortage = true;
@@ -61,6 +61,7 @@ Page({
         return goods;
       });
       cartGroupData.isNotEmpty = !isEmpty;
+      console.log(cartGroupData);
       this.setData({ cartGroupData });
     });
   },
@@ -70,8 +71,6 @@ Page({
     let currentActivity;
     let currentGoods;
     const { storeGoods } = this.data.cartGroupData;
-    console.log("storeGoods");
-    console.log(storeGoods);
     for (const store of storeGoods) {
       for (const activity of store.promotionGoodsList) {
         for (const goods of activity.goodsPromotionList) {
@@ -97,11 +96,9 @@ Page({
 
   // 注：实际场景时应该调用接口获取购物车数据
   getCartGroupData() {
-    const aa = fetchCartGroupData();
-    console.log(aa);
     const { cartGroupData } = this.data;
     if (!cartGroupData) {
-      return aa;
+      return fetchCartGroupData();
     }
     return Promise.resolve({ data: cartGroupData });
   },

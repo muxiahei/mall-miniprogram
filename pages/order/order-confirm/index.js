@@ -445,6 +445,7 @@ Page({
 // uid: "88888888205500"
 // __proto__: Object
 // userName: "测试用户0"
+
     // 提交到后端创建订单
     const data = {
         userId: '',
@@ -458,11 +459,21 @@ Page({
         district: params.userAddressReq.districtName,
         address: params.userAddressReq.address,
 
-        spuId: goodsRequestList[0].spuId,
-        skuId: goodsRequestList[0].skuId,
-        productName: goodsRequestList[0].goodsName,
-        productAmount: goodsRequestList[0].quantity,
+        orderDetailList: [],   
     }
+    for(const element of goodsRequestList) {
+      const skuData = {};
+      skuData.spuId = element.spuId;
+      skuData.skuId = element.skuId;
+      skuData.productName = element.title;
+      skuData.productAmount = element.quantity;
+      data.orderDetailList.push(skuData);
+    }
+    // spuId: goodsRequestList[0].spuId,
+    //     skuId: goodsRequestList[0].skuId,
+    //     productName: goodsRequestList[0].goodsName,
+    //     productAmount: goodsRequestList[0].quantity,
+
     wx.request({
       url: orderUrl + '/orders/',
       data: data,
@@ -471,9 +482,6 @@ Page({
       header: {
         'content-type': 'application/json' // 默认值 ,另一种是 "content-type": "application/x-www-form-urlencoded"
       },
-      // header: {
-      //   "content-type": "application/x-www-form-urlencoded"
-      // },
       complete: (res) => {
         if (res.statusCode >= 200 && res.statusCode < 300) {
 
@@ -486,7 +494,7 @@ Page({
           });
           setTimeout(() => {
             wx.navigateTo({
-              url: `/pages/goods/details/index?spuId=${data.spuId}`,
+              url: "/pages/goods/index"
             });
           }, 1000)
           resolve({
@@ -497,7 +505,7 @@ Page({
       }
     })
 
-    // 提交支付信息
+    // //提交支付信息
     // commitPay(params).then(
     //   (res) => {
     //     this.payLock = false;
