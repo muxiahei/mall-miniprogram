@@ -1,6 +1,8 @@
 import Dialog from 'tdesign-miniprogram/dialog/index';
 import Toast from 'tdesign-miniprogram/toast/index';
 import { fetchCartGroupData } from '../../services/cart/cart';
+import { deleteCart } from '../../services/cart/deleteCart';
+import { changeCartQuantity } from '../../services/cart/changeCartQuantity';
 
 Page({
   data: {
@@ -9,6 +11,7 @@ Page({
 
   // 调用自定义tabbar的init函数，使页面与tabbar激活状态保持一致
   onShow() {
+    this.refreshData();
     this.getTabBar().init();
   },
 
@@ -61,7 +64,6 @@ Page({
         return goods;
       });
       cartGroupData.isNotEmpty = !isEmpty;
-      console.log(cartGroupData);
       this.setData({ cartGroupData });
     });
   },
@@ -97,10 +99,11 @@ Page({
   // 注：实际场景时应该调用接口获取购物车数据
   getCartGroupData() {
     const { cartGroupData } = this.data;
-    if (!cartGroupData) {
-      return fetchCartGroupData();
-    }
-    return Promise.resolve({ data: cartGroupData });
+    return fetchCartGroupData();
+    // if (!cartGroupData) {
+    //   return fetchCartGroupData();
+    // }
+    // return Promise.resolve({ data: cartGroupData });
   },
 
   // 选择单个商品
@@ -125,39 +128,42 @@ Page({
 
   // 加购数量变更
   // 注：实际场景时应该调用接口
-  changeQuantityService({ spuId, skuId, quantity }) {
-    this.findGoods(spuId, skuId).currentGoods.quantity = quantity;
-    return Promise.resolve();
+  changeQuantityService({ cartId, spuId, skuId, quantity }) {
+
+    return changeCartQuantity(cartId, spuId, skuId, quantity);
+    // this.findGoods(spuId, skuId).currentGoods.quantity = quantity;
+    // return Promise.resolve();
   },
 
   // 删除加购商品
   // 注：实际场景时应该调用接口
   deleteGoodsService({ spuId, skuId }) {
-    function deleteGoods(group) {
-      for (const gindex in group) {
-        const goods = group[gindex];
-        if (goods.spuId === spuId && goods.skuId === skuId) {
-          group.splice(gindex, 1);
-          return gindex;
-        }
-      }
-      return -1;
-    }
-    const { storeGoods, invalidGoodItems } = this.data.cartGroupData;
-    for (const store of storeGoods) {
-      for (const activity of store.promotionGoodsList) {
-        if (deleteGoods(activity.goodsPromotionList) > -1) {
-          return Promise.resolve();
-        }
-      }
-      if (deleteGoods(store.shortageGoodsList) > -1) {
-        return Promise.resolve();
-      }
-    }
-    if (deleteGoods(invalidGoodItems) > -1) {
-      return Promise.resolve();
-    }
-    return Promise.reject();
+    return deleteCart(skuId);
+    // function deleteGoods(group) {
+    //   for (const gindex in group) {
+    //     const goods = group[gindex];
+    //     if (goods.spuId === spuId && goods.skuId === skuId) {
+    //       group.splice(gindex, 1);
+    //       return gindex;
+    //     }
+    //   }
+    //   return -1;
+    // }
+    // const { storeGoods, invalidGoodItems } = this.data.cartGroupData;
+    // for (const store of storeGoods) {
+    //   for (const activity of store.promotionGoodsList) {
+    //     if (deleteGoods(activity.goodsPromotionList) > -1) {
+    //       return Promise.resolve();
+    //     }
+    //   }
+    //   if (deleteGoods(store.shortageGoodsList) > -1) {
+    //     return Promise.resolve();
+    //   }
+    // }
+    // if (deleteGoods(invalidGoodItems) > -1) {
+    //   return Promise.resolve();
+    // }
+    // return Promise.reject();
   },
 
   // 清空失效商品
@@ -167,7 +173,9 @@ Page({
     return Promise.resolve();
   },
 
+  // 选择商品
   onGoodsSelect(e) {
+    console.log(e);
     const {
       goods: { spuId, skuId },
       isSelected,
@@ -193,8 +201,10 @@ Page({
   },
 
   onQuantityChange(e) {
+    console.log("e");
+    console.log(e);
     const {
-      goods: { spuId, skuId },
+      goods: { spuId, skuId, cartId},
       quantity,
     } = e.detail;
     const { currentGoods } = this.findGoods(spuId, skuId);
@@ -218,6 +228,7 @@ Page({
       })
         .then(() => {
           this.changeQuantityService({
+            cartId,
             spuId,
             skuId,
             quantity: stockQuantity,
@@ -226,7 +237,7 @@ Page({
         .catch(() => {});
       return;
     }
-    this.changeQuantityService({ spuId, skuId, quantity }).then(() => this.refreshData());
+    this.changeQuantityService({cartId, spuId, skuId, quantity }).then(() => this.refreshData());
   },
 
   goCollect() {

@@ -94,6 +94,7 @@ Page({
     };
   },
   async init(reset = true) {
+
     const { loadMoreStatus, commentList = [] } = this.data;
     const params = this.generalQueryData(reset);
 
@@ -105,9 +106,8 @@ Page({
     });
 
     try {
-      const data = await fetchComments(params, {
-        method: 'POST',
-      });
+      const data = await fetchComments(params);
+      console.log(data);
       const code = 'SUCCESS';
       if (code.toUpperCase() === 'SUCCESS') {
         const { pageList, totalCount = 0 } = data;

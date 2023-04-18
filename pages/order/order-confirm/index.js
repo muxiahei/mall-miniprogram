@@ -376,8 +376,7 @@ Page({
       });
       return;
     }
-
-
+    
     if (this.payLock || !settleDetailData.settleType || !settleDetailData.totalAmount) {
       return;
     }
@@ -395,70 +394,27 @@ Page({
     if (invoiceData && invoiceData.email) {
       params.invoiceRequest = invoiceData;
     }
-    console.log("params");
     console.log(params);
-//     goodsRequestList: Array(1)
-// 0:
-// available: true
-// goodsName: "白色短袖连衣裙荷叶边裙摆宽松韩版休闲纯白清爽优雅连衣裙"
-// price: 100
-// primaryImage: "https://cdn-we-retail.ym.tencent.com/tsr/goods/nz-09a.png"
-// quantity: 1
-// skuId: 2
-// specInfo: (2) [{…}, {…}]
-// spuId: 1
-// storeId: "1"
-// thumb: "https://cdn-we-retail.ym.tencent.com/tsr/goods/nz-09a.png"
-// title: "白色短袖连衣裙荷叶边裙摆宽松韩版休闲纯白清爽优雅连衣裙"
-// __proto__: Object
-// length: 1
-// nv_length: (...)
-// __proto__: Array(0)
-// invoiceRequest: null
-// storeInfoList: [{…}]
-// totalAmount: 100
-// userAddressReq:
-// address: "甘肃省甘南藏族自治州碌曲县松日鼎盛大厦0层0号"
-// addressId: "0"
-// addressTag: ""
-// authToken: null
-// checked: true
-// cityCode: "623000"
-// cityName: "甘南藏族自治州"
-// countryCode: "chn"
-// countryName: "中国"
-// detailAddress: "松日鼎盛大厦0层0号"
-// districtCode: "623026"
-// districtName: "碌曲县"
-// id: "0"
-// isDefault: 1
-// latitude: "34.59103"
-// longitude: "102.48699"
-// name: "测试用户0"
-// phone: "17612345678"
-// phoneNumber: "17612345678"
-// provinceCode: "620000"
-// provinceName: "甘肃省"
-// saasId: "88888888"
-// storeId: null
-// tag: ""
-// uid: "88888888205500"
-// __proto__: Object
-// userName: "测试用户0"
-
     // 提交到后端创建订单
     const data = {
         userId: '',
         paymentMethod: 5,
         orderMoney: params.totalAmount,
-        districtMoney: params.totalAmount,
+        // 优惠金额
+        districtMoney: 0,
         paymentMoney: params.totalAmount,
         // payTime: new Date(),
         province: params.userAddressReq.provinceName,
         city: params.userAddressReq.cityName,
         district: params.userAddressReq.districtName,
         address: params.userAddressReq.address,
-
+        userId: params.userAddressReq.id,
+        // 收获人姓名
+        shippingUser: params.userAddressReq.name,
+        // 运费金额
+        shippingMoney: 0,
+        // 快递单号
+        shippingSn: '#00000' + params.userAddressReq.id,
         orderDetailList: [],   
     }
     for(const element of goodsRequestList) {
@@ -473,7 +429,6 @@ Page({
     //     skuId: goodsRequestList[0].skuId,
     //     productName: goodsRequestList[0].goodsName,
     //     productAmount: goodsRequestList[0].quantity,
-
     wx.request({
       url: orderUrl + '/orders/',
       data: data,
@@ -484,7 +439,6 @@ Page({
       },
       complete: (res) => {
         if (res.statusCode >= 200 && res.statusCode < 300) {
-
           Toast({
             context: this,
             selector: '#t-toast',
@@ -493,14 +447,12 @@ Page({
             icon: '',
           });
           setTimeout(() => {
-            wx.navigateTo({
-              url: "/pages/goods/index"
-            });
+            wx.switchTab({
+              url: "/pages/cart/index",
+            })
           }, 1000)
-          resolve({
-         })
+          res(res)
         } else {
-          reject(res)
         }
       }
     })

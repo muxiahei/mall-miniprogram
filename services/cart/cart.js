@@ -58,79 +58,7 @@ export function fetchCartGroupData(params) {
                         description: null,
                         doorSillRemain: null,
                         isNeedAddOnShop: 0,
-                        goodsPromotionList: [
-                          {
-                            uid: '88888888205468',
-                            saasId: '88888888',
-                            storeId: '1000',
-                            spuId: '11',
-                            skuId: '135691629',
-                            isSelected: 0,
-                            thumb:
-                              'https://cdn-we-retail.ym.tencent.com/tsr/goods/nz-17a.png',
-                            title: '运动连帽拉链卫衣休闲开衫长袖多色运动细绒面料运动上衣',
-                            primaryImage:
-                              'https://cdn-we-retail.ym.tencent.com/tsr/goods/nz-17a.png',
-                            quantity: 1,
-                            stockStatus: false,
-                            stockQuantity: 0,
-                            price: '25900',
-                            originPrice: '39900',
-                            tagPrice: null,
-                            tagText: null,
-                            roomId: null,
-                            specInfo: [
-                              {
-                                specTitle: '颜色',
-                                specValue: '军绿色',
-                              },
-                              {
-                                specTitle: '尺码',
-                                specValue: 'S',
-                              },
-                            ],
-                            joinCartTime: '2020-04-24T06:26:48.000+0000',
-                            available: 1,
-                            putOnSale: 1,
-                            etitle: null,
-                          },
-                          {
-                            uid: '88888888205468',
-                            saasId: '88888888',
-                            storeId: '1000',
-                            spuId: '5',
-                            skuId: '135691635',
-                            isSelected: 0,
-                            thumb:
-                              'https://cdn-we-retail.ym.tencent.com/tsr/goods/dz-2a.png',
-                            title:
-                              '迷你便携高颜值蓝牙无线耳机立体声只能触控式操作简约立体声耳机',
-                            primaryImage:
-                              'https://cdn-we-retail.ym.tencent.com/tsr/goods/dz-2a.png',
-                            quantity: 1,
-                            stockStatus: true,
-                            stockQuantity: 96,
-                            price: '29000',
-                            originPrice: '29900',
-                            tagPrice: null,
-                            tagText: null,
-                            roomId: null,
-                            specInfo: [
-                              {
-                                specTitle: '颜色',
-                                specValue: '黑色',
-                              },
-                              {
-                                specTitle: '类型',
-                                specValue: '简约款',
-                              },
-                            ],
-                            joinCartTime: '2020-06-29T07:55:17.000+0000',
-                            available: 1,
-                            putOnSale: 1,
-                            etitle: null,
-                          },
-                        ],
+                        goodsPromotionList: [],
                         lastJoinTime: null,
                       },
                     ],
@@ -149,46 +77,14 @@ export function fetchCartGroupData(params) {
                     },
                   },
                 ],
-                invalidGoodItems: [
-                  {
-                    uid: '88888888205468',
-                    saasId: '88888888',
-                    storeId: '1000',
-                    spuId: '1',
-                    skuId: '135691631',
-                    isSelected: 1,
-                    thumb: 'https://cdn-we-retail.ym.tencent.com/tsr/goods/nz-08b.png',
-                    title: '纯色纯棉休闲圆领短袖T恤纯白亲肤厚柔软细腻面料纯白短袖套头T恤',
-                    primaryImage:
-                      'https://cdn-we-retail.ym.tencent.com/tsr/goods/nz-08b.png',
-                    quantity: 8,
-                    stockStatus: true,
-                    stockQuantity: 177,
-                    price: '26900',
-                    originPrice: '31900',
-                    tagPrice: null,
-                    tagText: null,
-                    roomId: null,
-                    specInfo: [
-                      {
-                        specTitle: '颜色',
-                        specValue: '白色',
-                      },
-                      {
-                        specTitle: '尺码',
-                        specValue: 'S',
-                      },
-                    ],
-                    joinCartTime: '2020-04-28T04:03:59.000+0000',
-                    available: 1,
-                    putOnSale: 1,
-                    etitle: null,
-                  },
-                ],
+                invalidGoodItems: [],
                 isAllSelected: false,
-                selectedGoodsCount: 16,
-                totalAmount: '179997',
-                totalDiscountAmount: '110000',
+                // 商品选择的个数
+                selectedGoodsCount: 0,
+                // 商品总价
+                totalAmount: '0',
+                // 商品总优惠价
+                totalDiscountAmount: '0',
             },
             code: 'Success',
             msg: null,
@@ -199,9 +95,13 @@ export function fetchCartGroupData(params) {
           }
           const spuList = [];
           const array = res.data.data;
+          // 计算商品总价
+          let sum = 0;
           for (let index = 0; index < array.length; index++) {
             const element = array[index];
             const spu = {};
+            spu["cartId"] = element.cartId;
+            
             spu["uid"] = element.userId;
             spu["saasId"] = "88888888";
             spu["storeId"] = "11";
@@ -228,10 +128,13 @@ export function fetchCartGroupData(params) {
             spu["putOnSale"] = 1;
             spu["etitle"] = null;
   
+            sum += Number(spu["price"]) * Number(spu["quantity"])
             spuList.push(spu);
           }
           resp.data.storeGoods[0].promotionGoodsList[0].goodsPromotionList = spuList;
 
+          resp.data.selectedGoodsCount = spuList.length;
+          resp.data.totalAmount = sum;
           resolve(resp);
         } else {
         

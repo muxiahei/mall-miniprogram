@@ -1,13 +1,14 @@
 import { baseUrl } from '../../config/index';
 
 /** 首页获取商品列表 */
-export function fetchGoodsList(pageCurrent = 1, pageSize = 20) {
+export function fetchGoodsList(params) {
   return new Promise((resolve) => {
     wx.request({
       url: baseUrl + '/spus',
       data: {
-        pageCurrent,
-        pageSize
+        pageCurrent: params.pageCurrent,
+        pageSize: params.pageSize,
+        recommendId: params.recommendId
       },
       header: {
         'content-type': 'application/json'

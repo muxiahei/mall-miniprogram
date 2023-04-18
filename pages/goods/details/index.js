@@ -2,8 +2,12 @@ import Toast from 'tdesign-miniprogram/toast/index';
 
 // 获取单个商品详情
 import { fetchGood } from '../../../services/good/fetchGood';
+// 添加购物车
+import { addCart } from '../../../services/cart/addCart';
+
 // 获取该商品的活动列表
 import { fetchActivityList } from '../../../services/activity/fetchActivityList';
+
 // 获取商品评价评标
 import { getGoodsDetailsCommentList, getGoodsDetailsCommentsCount, } from '../../../services/good/fetchGoodsDetailsComments';
 
@@ -166,11 +170,15 @@ Page({
     selectedSkuValues.forEach((item) => {
       selectedAttrStr += `，${item.sppName}  `;
     });
+    
+    console.log("selectedSku")
+    console.log(selectedSku)
     const skuItem = skuList.filter((item) => {
-      let status = true;
+      let status = false;
       (item.specInfo || []).forEach((subItem) => {
         if (!selectedSku[subItem.spgId] || selectedSku[subItem.spgId] !== subItem.sppId) {
-          status = false;
+          console.log("1");
+          status = true;
         }
       });
       if (!status) return item;
@@ -180,9 +188,8 @@ Page({
     console.log("skuItem");
     console.log(skuItem);
     this.selectSpecsName(selectedSkuValues.length > 0 ? selectedAttrStr : '');
-
     // 参数规格选完之后，设置价格和sku图片
-    if (skuItem.length == 1) {
+    if (skuItem.length >= 1) {
       this.setData({
         selectItem: skuItem[0],
         selectSkuSellsPrice: skuItem[0].price || 0,
@@ -235,7 +242,8 @@ Page({
     }
   },
 
-  addCart() {
+  // 添加购物车
+  async addCart() {
     const { isAllSelectedSku } = this.data;
     Toast({
       context: this,
@@ -244,6 +252,21 @@ Page({
       icon: '',
       duration: 1000,
     });
+
+    console.log("ss")
+    console.log(this.data.selectItem)
+    const params = {
+
+      userId: '',
+      spuId: this.data.productInfo.spuId,
+      skuId: this.data.selectItem.skuId,
+      productAmount: this.data.buyNum,
+      price: this.data.selectItem.price,
+    };
+    console.log(params);
+    await addCart(params).then(res => {
+
+    })
   },
 
   // 购买
@@ -279,7 +302,6 @@ Page({
       thumb: this.data.productInfo.image,
       title: this.data.productInfo.productName,
     };
-    console.log(query);
     let urlQueryStr = obj2Params({
       goodsRequestList: JSON.stringify([query]),
     });
@@ -293,8 +315,10 @@ Page({
   specsConfirm() {
     const { buyType } = this.data;
     if (buyType === 1) {
+      // 立即购买
       this.gotoBuy();
     } else {
+      // 加入购物车
       this.addCart();
     }
     // this.handlePopupHide();

@@ -1,5 +1,6 @@
 import { fetchHome } from '../../services/home/home';
 import { fetchGoodsList } from '../../services/good/fetchGoods';
+
 import Toast from 'tdesign-miniprogram/toast/index';
 
 Page({
@@ -33,6 +34,7 @@ Page({
     this.getTabBar().init();
   },
   onLoad() {
+    console.log("进入home")
     this.init();
   },
   onReachBottom() {
@@ -86,7 +88,12 @@ Page({
       pageIndex = 1;
     }
     try {
-      const nextList = await fetchGoodsList(pageIndex, pageSize);
+      const params = {
+        pageCurrent: pageIndex,
+        pageSize: pageSize,
+        recommendId: this.privateData.tabIndex
+      }
+      const nextList = await fetchGoodsList(params);
       this.setData({
         goodsList: fresh ? nextList : this.data.goodsList.concat(nextList),
         goodsListLoadStatus: 0,

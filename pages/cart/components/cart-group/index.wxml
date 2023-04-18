@@ -73,6 +73,8 @@
                 </view>
                 <view slot="append-body" class="goods-stepper">
                   <view class="stepper-tip" wx:if="{{goods.shortageStock}}">库存不足</view>
+                  
+                  <!-- 购买数量 -->
                   <t-stepper
                     classname="stepper-info"
                     value="{{goods.quantity}}"
