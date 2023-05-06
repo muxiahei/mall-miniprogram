@@ -126,9 +126,13 @@ Page({
   },
   // 轮播图点击
   navToActivityDetail({ detail }) {
+    
     const { index: promotionID = 0 } = detail || {};
+    // wx.navigateTo({
+    //   url: `/pages/promotion-detail/index?promotion_id=${promotionID}`,
+    // });
     wx.navigateTo({
-      url: `/pages/promotion-detail/index?promotion_id=${promotionID}`,
+      url: `/pages/goods/details/index?spuId=${promotionID}`,
     });
   },
 });

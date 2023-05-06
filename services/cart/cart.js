@@ -29,7 +29,7 @@ export function fetchCartGroupData(params) {
                 storeGoods: [
                   {
                     storeId: '1000',
-                    storeName: '云Mall深圳旗舰店',
+                    storeName: 'Mall旗舰店',
                     storeStatus: 1,
                     totalDiscountSalePrice: '9990',
                     promotionGoodsList: [

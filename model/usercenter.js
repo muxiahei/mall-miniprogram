@@ -1,8 +1,7 @@
 const userInfo = {
-  avatarUrl:
-    'https://img2.baidu.com/it/u=3202947311,1179654885&fm=253&fmt=auto&app=138&f=JPEG?w=800&h=500',
+  avatarUrl: 'https://img2.woyaogexing.com/2023/05/05/dd28c352d5a167221830edb010ddb4d3.jpg',
   nickName: '季晨正 🌟',
-  phoneNumber: '13438358888',
+  phoneNumber: '17366463550',
   gender: 2,
 };
 const countsData = [
@@ -20,15 +19,15 @@ const countsData = [
 
 const orderTagInfos = [
   {
-    orderNum: 1,
+    orderNum: 0,
     tabType: 5,
   },
   {
-    orderNum: 1,
+    orderNum: 0,
     tabType: 10,
   },
   {
-    orderNum: 1,
+    orderNum: 0,
     tabType: 40,
   },
   {
